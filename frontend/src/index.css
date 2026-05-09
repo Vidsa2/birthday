@@ -171,3 +171,222 @@ body {
   .main-content { margin-left: 0; }
   .page-wrapper { padding: 1rem; }
 }
+
+/* ─────────────────────────────────────────────
+   Cutie Pie split components + mobile responsive
+───────────────────────────────────────────── */
+
+.cutie-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+.cutie-left-panel,
+.cutie-wheel-panel {
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(216, 180, 254, 0.45);
+  min-height: 360px;
+  padding: 1.6rem;
+  background: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+.cutie-left-content {
+  position: relative;
+  z-index: 1;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.balloon-help-text {
+  position: absolute;
+  top: 92px;
+  right: 18px;
+  z-index: 3;
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #7c3aed;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(216, 180, 254, 0.45);
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+}
+
+.spin-wheel-section {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+.gift-name-game {
+  margin-top: 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(216, 180, 254, 0.45);
+  padding: 0.9rem;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(32px, 1fr));
+  gap: 0.45rem;
+}
+
+.gift-box-btn {
+  min-height: 38px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.16), rgba(236, 72, 153, 0.16));
+  color: #7c3aed;
+  font-weight: 1000;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(124, 58, 237, 0.1);
+}
+
+/* general mobile safety for all pages */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+audio {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+  font-family: inherit;
+}
+
+@media (max-width: 1024px) {
+  .cutie-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cutie-left-panel,
+  .cutie-wheel-panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .cutie-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cutie-left-panel,
+  .cutie-wheel-panel {
+    padding: 1rem;
+    border-radius: 22px;
+  }
+
+  .cutie-left-content {
+    min-height: auto;
+    padding-top: 3.5rem;
+  }
+
+  .balloon-help-text {
+    top: 82px;
+    right: 10px;
+    font-size: 0.66rem;
+  }
+
+  .wheel-wrap {
+    width: 230px;
+    height: 230px;
+  }
+
+  .wheel-wrap > div:nth-child(2) {
+    width: 230px !important;
+    height: 230px !important;
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(4, minmax(38px, 1fr));
+  }
+
+  .page-wrapper [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-wrapper [style*="minmax"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 9vw, 2.6rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 7vw, 2rem) !important;
+  }
+
+  h3 {
+    font-size: clamp(1.05rem, 5vw, 1.35rem) !important;
+  }
+
+  audio {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cutie-left-panel,
+  .cutie-wheel-panel {
+    padding: 0.8rem;
+  }
+
+  .wheel-wrap {
+    width: 200px;
+    height: 200px;
+  }
+
+  .wheel-wrap > div:nth-child(2) {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(4, minmax(34px, 1fr));
+    gap: 0.35rem;
+  }
+
+  .gift-box-btn {
+    min-height: 34px;
+    font-size: 0.9rem;
+  }
+}

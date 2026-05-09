@@ -146,7 +146,7 @@ export default function CutiePie() {
   const [editDescriptionValue, setEditDescriptionValue] = useState("");
   const [savingDescription, setSavingDescription] = useState(false);
 
-  const [candles, setCandles] = useState([true, true, true]);
+  const [candles, setCandles] = useState([true, true, true, true, true]);
 
   const [selectedMusicFile, setSelectedMusicFile] = useState(null);
   const [musicTitle, setMusicTitle] = useState("");
@@ -721,9 +721,9 @@ export default function CutiePie() {
     setCandles((prev) => prev.map((item, i) => (i === index ? !item : item)));
   }
 
-  function resetFun() {
-    setCandles([true, true, true]);
-  }
+ function resetFun() {
+  setCandles([true, true, true, true, true]);
+}
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
