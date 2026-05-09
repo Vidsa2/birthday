@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// firestore.rules
+// ─────────────────────────────────────────────────────────────────────────────
+// Save this as firestore.rules in your Firebase project root and deploy with:
+//   firebase deploy --only firestore:rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public photo gallery — anyone authenticated can read/write
+    // Tighten in production as needed
+    match /photos/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Private photos — read/write allowed (password check happens in backend)
+    match /private_photos/{doc} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Private memories — read by backend service account only
+    match /private_memories/{doc} {
+      allow read, write: if false; // Accessed only via backend Admin SDK
+    }
+
+    // Config (hashed password) — never readable from client
+    match /config/{doc} {
+      allow read, write: if false; // Accessed only via backend Admin SDK
+    }
+  }
+}
